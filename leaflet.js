@@ -1,23 +1,36 @@
-const map = L.map('map').setView([51.505, -0.09], 13);
+const tileUrl =
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-}).addTo(map);
+const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
-const marker = L.marker([51.5, -0.09]).addTo(map);
+const initialZoom = 15;
+
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
+getLocation();
 
 function success(pos) {
-    const crd = pos.coords;
+  const crd = pos.coords;
 
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
+  marker.setLatLng([crd.latitude, crd.longitude]);
+  map.setView([crd.latitude, crd.longitude], initialZoom);
+}
 
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
 
-  navigator.geolocation.getCurrentPosition(success, error);
+function getCaffees() {
+  // market.setLatLng([])
+}
+
+const map = L.map("map").setView([0, 0], initialZoom);
+const marker = L.marker([0, 0]).addTo(map);
+
+L.tileLayer(tileUrl, {
+  attribution,
+  maxZoom: 20,
+}).addTo(map);
