@@ -40,6 +40,12 @@ const locations = [
       latitude: 57.72057,
       longitude: 12.93258,
     },
+    ammenities: {
+      changeroom: false,
+      toys: false,
+      playground: true,
+      garden: false,
+    },
   },
   {
     id: 3,
@@ -52,6 +58,12 @@ const locations = [
     coordinates: {
       latitude: 57.71984,
       longitude: 12.94025,
+    },
+    ammenities: {
+      changeroom: true,
+      toys: true,
+      playground: false,
+      garden: true,
     },
   },
 ];
@@ -71,10 +83,12 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-const popup = L.popup().setContent(`<h5>Hello</h5>`);
-// const popup = (item) => {
-//   L.popup().setContent(`<h4>${item.name}</h4>`);
-// };
+// const popup = L.popup().setContent(`<h5>Hello</h5>`);
+const popup = (item) => {
+  let popup = L.popup().setContent(`<h4>${item.name}</h4>`);
+
+  return popup;
+};
 
 function getCaffees() {
   locations.forEach((item) => {
@@ -83,7 +97,17 @@ function getCaffees() {
         `
           <h3>${item.name}</h3>
           <h5>${item.address.street}</h5>
-          <h5>${item.address.postcode} ${item.address.city}</h5>      
+          <h5>${item.address.postcode} ${item.address.city}</h5>
+          <span>
+          ${
+            !item.ammenities
+              ? "No ammeities"
+              : item.ammenities.changeroom &&
+                "Change" &&
+                item.ammenities.toys &&
+                "Toys"
+          }
+          </span> 
         `
       )
       .openPopup()
