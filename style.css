@@ -1,10 +1,19 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #map {
-    height: 800px;
+  height: 800px;
+}
+
+.ammenities-icons {
+  margin-top: 10px;
+  padding-left: 15px;
+  height: 20px;
+}
+
+.ammenities-icons:first-of-type {
+  padding: 0;
 }

@@ -18,14 +18,14 @@ const locations = [
       postcode: "506 38",
     },
     coordinates: {
-      latitude: 57.73296,
-      longitude: 12.93726,
+      latitude: "57.73296",
+      longitude: "12.93726",
     },
     ammenities: {
       changeroom: true,
       toys: true,
-      playground: false,
-      garden: false,
+      playground: true,
+      garden: true,
     },
   },
   {
@@ -37,11 +37,11 @@ const locations = [
       postcode: "503 38",
     },
     coordinates: {
-      latitude: 57.72057,
-      longitude: 12.93258,
+      latitude: "57.72057",
+      longitude: "12.93258",
     },
     ammenities: {
-      changeroom: false,
+      changeroom: true,
       toys: false,
       playground: true,
       garden: false,
@@ -56,8 +56,8 @@ const locations = [
       postcode: "503 35",
     },
     coordinates: {
-      latitude: 57.71984,
-      longitude: 12.94025,
+      latitude: "57.71984",
+      longitude: "12.94025",
     },
     ammenities: {
       changeroom: true,
@@ -75,8 +75,8 @@ const locations = [
       postcode: "111 51",
     },
     coordinates: {
-      latitude: 59.331510,
-      longitude: 18.063690,
+      latitude: "59.33151",
+      longitude: "18.06369",
     },
     ammenities: {
       changeroom: true,
@@ -94,8 +94,8 @@ const locations = [
       postcode: "111 21",
     },
     coordinates: {
-      latitude: 59.330290,
-      longitude: 18.064890,
+      latitude: "59.33029",
+      longitude: "18.06489",
     },
     ammenities: {
       changeroom: true,
@@ -113,8 +113,8 @@ const locations = [
       postcode: "411 34",
     },
     coordinates: {
-      latitude: 57.697750,
-      longitude: 11.976630,
+      latitude: "57.69775",
+      longitude: "11.97663",
     },
     ammenities: {
       changeroom: true,
@@ -132,8 +132,8 @@ const locations = [
       postcode: "411 37",
     },
     coordinates: {
-      latitude: 57.699810,
-      longitude: 11.971880,
+      latitude: "57.69981",
+      longitude: "11.97188",
     },
     ammenities: {
       changeroom: true,
@@ -148,8 +148,6 @@ function getLocation() {
   navigator.geolocation.getCurrentPosition(success, error);
 }
 
-getLocation();
-
 function success(pos) {
   const crd = pos.coords;
   map.setView([crd.latitude, crd.longitude], initialZoom);
@@ -159,41 +157,51 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-// const popup = L.popup().setContent(`<h5>Hello</h5>`);
-const popup = (item) => {
-  let popup = L.popup().setContent(`<h4>${item.name}</h4>`);
-
-  return popup;
+const getAmmenities = (item) => {
+  const list = [];
+  for (const [key, value] of Object.entries(item.ammenities)) {
+    if (value === true) {
+      list.push(key);
+    }
+  }
+  return list
+    .map(
+      (item) =>
+        `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
+    )
+    .join("");
 };
 
-const getAmmenities = (item) => {
-    const list = [];
-    for (const [key, value] of Object.entries(item.ammenities)) {
-        if (value === true) {
-            list.push(key);
-        }
-    }
-    return list.map((item) => item)
-}
+const popup = (item) => {
+  return `
+    <h3>${item.name}</h3>
+    <h5>${item.address.street}</h5>
+    <h5>${item.address.postcode} ${item.address.city}</h5>
 
+    ${getAmmenities(item)}    
+  `;
+};
 
 function getCaffees() {
   locations.forEach((item) => {
-    L.marker([item.coordinates.latitude, item.coordinates.longitude])
+    L.marker([
+      Number(item.coordinates.latitude),
+      Number(item.coordinates.longitude),
+    ])
       .bindPopup(
         `
           <h3>${item.name}</h3>
           <h5>${item.address.street}</h5>
           <h5>${item.address.postcode} ${item.address.city}</h5>
-
           ${getAmmenities(item)}
-
         `
       )
       .openPopup()
       .addTo(map);
   });
 }
+getLocation();
+
 getCaffees();
 
 L.tileLayer(tileUrl, {
