@@ -53,7 +53,7 @@ const locations = [
     address: {
       street: "Södra Strandgatan 6",
       city: "Borås",
-      postcode: " 503 35",
+      postcode: "503 35",
     },
     coordinates: {
       latitude: 57.71984,
@@ -64,6 +64,82 @@ const locations = [
       toys: true,
       playground: false,
       garden: true,
+    },
+  },
+  {
+    id: 4,
+    name: "Waynes Coffee",
+    address: {
+      street: "Drottninggatan 33",
+      city: "Stockholm",
+      postcode: "111 51",
+    },
+    coordinates: {
+      latitude: 59.331510,
+      longitude: 18.063690,
+    },
+    ammenities: {
+      changeroom: true,
+      toys: false,
+      playground: false,
+      garden: true,
+    },
+  },
+  {
+    id: 5,
+    name: "Caffetteria del corso",
+    address: {
+      street: "Drottninggatan 56",
+      city: "Stockholm",
+      postcode: "111 21",
+    },
+    coordinates: {
+      latitude: 59.330290,
+      longitude: 18.064890,
+    },
+    ammenities: {
+      changeroom: true,
+      toys: true,
+      playground: true,
+      garden: false,
+    },
+  },
+  {
+    id: 6,
+    name: "Viktors Kaffe",
+    address: {
+      street: "Geijersgatan 7",
+      city: "Göteborg",
+      postcode: "411 34",
+    },
+    coordinates: {
+      latitude: 57.697750,
+      longitude: 11.976630,
+    },
+    ammenities: {
+      changeroom: true,
+      toys: true,
+      playground: true,
+      garden: false,
+    },
+  },
+  {
+    id: 7,
+    name: "Café Berlin",
+    address: {
+      street: "Vasagatan 46",
+      city: "Göteborg",
+      postcode: "411 37",
+    },
+    coordinates: {
+      latitude: 57.699810,
+      longitude: 11.971880,
+    },
+    ammenities: {
+      changeroom: true,
+      toys: true,
+      playground: true,
+      garden: false,
     },
   },
 ];
@@ -90,6 +166,17 @@ const popup = (item) => {
   return popup;
 };
 
+const getAmmenities = (item) => {
+    const list = [];
+    for (const [key, value] of Object.entries(item.ammenities)) {
+        if (value === true) {
+            list.push(key);
+        }
+    }
+    return list.map((item) => item)
+}
+
+
 function getCaffees() {
   locations.forEach((item) => {
     L.marker([item.coordinates.latitude, item.coordinates.longitude])
@@ -98,16 +185,9 @@ function getCaffees() {
           <h3>${item.name}</h3>
           <h5>${item.address.street}</h5>
           <h5>${item.address.postcode} ${item.address.city}</h5>
-          <span>
-          ${
-            !item.ammenities
-              ? "No ammeities"
-              : item.ammenities.changeroom &&
-                "Change" &&
-                item.ammenities.toys &&
-                "Toys"
-          }
-          </span> 
+
+          ${getAmmenities(item)}
+
         `
       )
       .openPopup()
