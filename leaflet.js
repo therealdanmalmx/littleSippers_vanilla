@@ -138,11 +138,18 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
-      playground: true,
-      garden: false,
+      playground: false,
+      garden: true,
     },
   },
 ];
+
+const lsicon = L.icon({
+    iconUrl: '/img/baby.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -15],
+});
 
 function getLocation() {
   navigator.geolocation.getCurrentPosition(success, error);
@@ -157,52 +164,62 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
+
 const getAmmenities = (item) => {
-  const list = [];
-  for (const [key, value] of Object.entries(item.ammenities)) {
-    if (value === true) {
-      list.push(key);
+    const list = [];
+    for (const [key, value] of Object.entries(item.ammenities)) {
+        if (value === true) {
+            list.push(key);
+        }
     }
-  }
-  return list
+
+    return list
     .map(
-      (item) =>
+        (item) =>
         `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
-    )
-    .join("");
-};
+        )
+        .join("");
+    };
 
-const popup = (item) => {
-  return `
-    <h3>${item.name}</h3>
-    <h5>${item.address.street}</h5>
-    <h5>${item.address.postcode} ${item.address.city}</h5>
-
-    ${getAmmenities(item)}    
-  `;
-};
+function checkIcons() {
+}
+checkIcons();
 
 function getCaffees() {
-  locations.forEach((item) => {
-    L.marker([
-      Number(item.coordinates.latitude),
-      Number(item.coordinates.longitude),
-    ])
-      .bindPopup(
-        `
-          <h3>${item.name}</h3>
-          <h5>${item.address.street}</h5>
-          <h5>${item.address.postcode} ${item.address.city}</h5>
-          ${getAmmenities(item)}
-        `
-      )
-      .openPopup()
-      .addTo(map);
-  });
-}
-getLocation();
+    locations.forEach((item) => {
+        L.marker([
+            Number(item.coordinates.latitude),
+            Number(item.coordinates.longitude),
+        ], {icon: lsicon})
+        .bindPopup(
+            `
+            <h3>${item.name}</h3>
+            <h5 class="street-address">${item.address.street}</h5>
+            <h5 class="other-address">${item.address.postcode} ${item.address.city}</h5>
+            ${getAmmenities(item)}
+            `
+            )
+            .openPopup()
+            .addTo(map);
+        });
 
+        // window.onload = function() {
+        //     let icon = document.querySelector('.ammenities-icons');
+        //     icon.addEventListener('click', function(){console.log('clicked icon')})
+        // }
+    }
+
+    function getIcons() {
+        window.onload= function() {
+            let icon = document.querySelector('.ammenities-icons');
+            icon.addEventListener('click', function(){console.log('clicked icon')})
+
+        }
+    }
+
+getLocation();
 getCaffees();
+getIcons()
 
 L.tileLayer(tileUrl, {
   attribution,

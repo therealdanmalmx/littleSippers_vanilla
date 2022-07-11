@@ -8,10 +8,23 @@
   height: 800px;
 }
 
+.street-address {
+	/* margin-top: 3px; */
+	display: block;
+	font-size: 0.75rem;
+	font-weight: normal
+}
+.other-address {
+	font-size: 0.75rem;
+	font-weight: normal
+}
+
 .ammenities-icons {
-  margin-top: 10px;
-  padding-left: 15px;
-  height: 20px;
+	display: inline-block;
+	margin-top: 10px;
+	padding-left: 15px;
+	height: 20px;
+	cursor: pointer;
 }
 
 .ammenities-icons:first-of-type {
