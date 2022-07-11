@@ -209,16 +209,23 @@ function getCaffees() {
       .openPopup()
       .addTo(map);
   });
-  let icons = document.querySelectorAll(".ammenities-icons");
-  icons.forEach((icon) => {
-    icon.addEventListener("click", () => {
+}
+function getIcon() {
+  // let content = document.querySelector(".ammenities-icons");
+  let content = document.querySelectorAll(".ammenities-icons");
+  // let icons = document.querySelectorAll(".ammenities-icons");
+  // content.on("click", function () {
+  //   console.log("click");
+  // });
+  content.forEach((icon) => {
+    icon.on("click", function () {
       alert("Clicked");
     });
   });
 }
-
 getLocation();
 getCaffees();
+getIcon();
 
 L.tileLayer(tileUrl, {
   attribution,
