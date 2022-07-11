@@ -24,6 +24,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: true,
       garden: true,
     },
@@ -43,6 +44,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: false,
+      books: true,
       playground: true,
       garden: false,
     },
@@ -62,6 +64,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: false,
       garden: true,
     },
@@ -81,6 +84,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: false,
+      books: true,
       playground: false,
       garden: true,
     },
@@ -100,6 +104,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: true,
       garden: false,
     },
@@ -119,6 +124,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: true,
       garden: false,
     },
@@ -138,17 +144,18 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: false,
       garden: true,
     },
   },
 ];
 
-const customIcon = L.icon({
-    iconUrl: '/img/baby.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -20],
+const lsicon = L.icon({
+  iconUrl: "/img/baby.png",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -25],
 });
 
 function getLocation() {
@@ -164,58 +171,51 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-
 const getAmmenities = (item) => {
-    const list = [];
-    for (const [key, value] of Object.entries(item.ammenities)) {
-        if (value === true) {
-            list.push(key);
-        }
+  const list = [];
+  for (const [key, value] of Object.entries(item.ammenities)) {
+    if (value === true) {
+      list.push(key);
     }
+  }
 
-    return list
+  return list
     .map(
-        (item) =>
+      (item) =>
         `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
-        )
-        .join("");
-    };
+    )
+    .join("");
+};
 
-    let map1 = document.getElementById('map');
-    let img = document.createElement('img');
-    img.classList.add('ammenities-icons')
-    map1.appendChild(img);
-
-    console.log({ map1 })
-
-    let icons = document.querySelectorAll('img.ammenities-icons')
-    Array.from(icons).forEach(icon => icon.addEventListener('click', clickIcon))
-    console.log({ icons });
-
-    function clickIcon() {
-        console.log('CLICKED')
-    }
-
+function checkIcons() {}
+checkIcons();
 
 function getCaffees() {
-    locations.forEach((item) => {
-        L.marker([
-            Number(item.coordinates.latitude),
-            Number(item.coordinates.longitude),
-        ], {icon: customIcon})
-        .bindPopup(
-            `
+  locations.forEach((item) => {
+    L.marker(
+      [Number(item.coordinates.latitude), Number(item.coordinates.longitude)],
+      { icon: lsicon }
+    )
+      .bindPopup(
+        `
             <h3>${item.name}</h3>
             <h5 class="street-address">${item.address.street}</h5>
-            <h5 class="other-address">${item.address.postcode} ${item.address.city}</h5>
+            <h5 class="other-address">${item.address.postcode} ${
+          item.address.city
+        }</h5>
             ${getAmmenities(item)}
             `
-            )
-            .openPopup()
-            .addTo(map);
-        });
-    }
-
+      )
+      .openPopup()
+      .addTo(map);
+  });
+  let icons = document.querySelectorAll(".ammenities-icons");
+  icons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      alert("Clicked");
+    });
+  });
+}
 
 getLocation();
 getCaffees();
