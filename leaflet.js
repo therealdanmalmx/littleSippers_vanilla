@@ -151,7 +151,7 @@ const locations = [
   },
 ];
 
-const lsicon = L.icon({
+const icon = L.icon({
   iconUrl: "/img/baby.png",
   iconSize: [30, 30],
   iconAnchor: [15, 30],
@@ -173,28 +173,41 @@ function error(err) {
 
 const getAmmenities = (item) => {
   const list = [];
+
   for (const [key, value] of Object.entries(item.ammenities)) {
     if (value === true) {
       list.push(key);
     }
   }
 
-  return list
+  const letList = list
     .map(
       (item) =>
         `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
     )
     .join("");
-};
 
-function checkIcons() {}
-checkIcons();
+  document.addEventListener("DOMContentLoaded", getIcons);
+  let content = document.querySelectorAll("img.ammenities-icons");
+  content.forEach((el) => {
+    el.addEventListener("click", () => {
+      if (el.target.className === "ammenities-icons") {
+        console.log("clicked");
+      }
+    });
+  });
+
+  function getIcons() {}
+  console.log({ content });
+
+  return letList;
+};
 
 function getCaffees() {
   locations.forEach((item) => {
     L.marker(
       [Number(item.coordinates.latitude), Number(item.coordinates.longitude)],
-      { icon: lsicon }
+      { icon }
     )
       .bindPopup(
         `
@@ -204,28 +217,16 @@ function getCaffees() {
           item.address.city
         }</h5>
             ${getAmmenities(item)}
+            
             `
       )
       .openPopup()
       .addTo(map);
   });
 }
-function getIcon() {
-  // let content = document.querySelector(".ammenities-icons");
-  let content = document.querySelectorAll(".ammenities-icons");
-  // let icons = document.querySelectorAll(".ammenities-icons");
-  // content.on("click", function () {
-  //   console.log("click");
-  // });
-  content.forEach((icon) => {
-    icon.on("click", function () {
-      alert("Clicked");
-    });
-  });
-}
+
 getLocation();
 getCaffees();
-getIcon();
 
 L.tileLayer(tileUrl, {
   attribution,
