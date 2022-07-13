@@ -175,30 +175,23 @@ function error(err) {
 }
 
 const getAmmenities = (item) => {
-
-    // const res = await fetch('http://localhost:1337/api/cafes')
-    // const json = await res.json()
-
-    // const {data} = json
+    console.log({item})
     const list = [];
-    // const ammenities = data.forEach((item) => item.attributes.amenities)
-    // console.log({ammenities})
-
-    for (const [key, value] of Object.entries(item.attributes.amenities)) {
+    for (const [key, value] of Object.entries(item[0])) {
+        console.log({key})
         if (value === 'true') {
-          list.push(key);
+            list.push(key);
         }
-      }
+    }
 
-      console.log({list})
-
+    console.log({list});
     return list
-        .map(
-            (item) =>
-                `<img onclick="handleImageClick()" class="ammenities-icons" src=img/${item}.png alt=${item} />`
-           )
-            .join("");
-};
+    .map(
+        (item) =>
+        `<img onclick="handleImageClick()" class="ammenities-icons" src=img/${item}.png alt=${item} />`
+        )
+        .join("");
+    };
 
 function handleImageClick() {
     const div = document.createElement('div');
@@ -215,7 +208,7 @@ async function getCaffees() {
     const data = json.data;
 
     data.forEach((item) => {
-        console.log({item});
+        // console.log({item});
         let popupDiv = L.DomUtil.create('div', 'infoWindow');
         popupDiv.innerHTML = `
             <h3>${item.attributes.name}</h3>
