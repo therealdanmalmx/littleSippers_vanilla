@@ -175,9 +175,9 @@ function error(err) {
 }
 
 const getAmmenities = (item) => {
-    console.log({item})
+    // console.log('item', item)
     const list = [];
-    for (const [key, value] of Object.entries(item[0])) {
+    for (const [key, value] of Object.entries(item)) {
         console.log({key})
         if (value === 'true') {
             list.push(key);
@@ -208,7 +208,7 @@ async function getCaffees() {
     const data = json.data;
 
     data.forEach((item) => {
-        // console.log({item});
+        console.log({item});
         let popupDiv = L.DomUtil.create('div', 'infoWindow');
         popupDiv.innerHTML = `
             <h3>${item.attributes.name}</h3>
