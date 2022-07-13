@@ -4,9 +4,10 @@ const tileUrl =
 const attribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
-const initialZoom = 13;
+const initialZoom = 7;
 
-const map = L.map("map").setView([0, 0], initialZoom);
+// const map = L.map("map").setView([0, 0], initialZoom);
+const map = L.map("map").setView([60, 13], initialZoom);
 
 const locations = [
   {
@@ -164,35 +165,40 @@ function getLocation() {
 
 function success(pos) {
   const crd = pos.coords;
-  map.setView([crd.latitude, crd.longitude], initialZoom);
+//   map.setView([crd.latitude, crd.longitude], initialZoom);
+  map.setView([60, 13], initialZoom);
+
 }
 
 function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-const getAmmenities = async (item) => {
+const getAmmenities = (item) => {
 
-    const res = await fetch('http://localhost:1337/api/cafes')
-    const json = await res.jseon()
+    // const res = await fetch('http://localhost:1337/api/cafes')
+    // const json = await res.json()
 
-    const data = json.data;
-
+    // const {data} = json
     const list = [];
+    // const ammenities = data.forEach((item) => item.attributes.amenities)
+    // console.log({ammenities})
 
-  for (const [key, value] of Object.entries(data)) {
-    if (value === 'true') {
-      list.push(key);
-    }
-  }
+    for (const [key, value] of Object.entries(item.attributes.amenities)) {
+        if (value === 'true') {
+          list.push(key);
+        }
+      }
 
-  return list
-    .map(
-      (item) =>
-        `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
-        )
-        .join("");
-    };
+      console.log({list})
+
+    return list
+        .map(
+            (item) =>
+                `<img onclick="handleImageClick()" class="ammenities-icons" src=img/${item}.png alt=${item} />`
+           )
+            .join("");
+};
 
 function handleImageClick() {
     const div = document.createElement('div');
@@ -201,22 +207,27 @@ function handleImageClick() {
 
     console.log('clicked')
 }
-function getCaffees() {
+async function getCaffees() {
 
-    locations.forEach((item) => {
+    const res = await fetch('http://localhost:1337/api/cafes')
+    const json = await res.json()
+
+    const data = json.data;
+
+    data.forEach((item) => {
+        console.log({item});
         let popupDiv = L.DomUtil.create('div', 'infoWindow');
         popupDiv.innerHTML = `
-            <h3>${item.name}</h3>
-            <h5 class="street-address">${item.address.street}</h5>
-            <h5 class="other-address">${item.address.postcode} ${
-          item.address.city
+            <h3>${item.attributes.name}</h3>
+            <h5 class="street-address">${item.attributes.street}</h5>
+            <h5 class="other-address">${item.attributes.postal_code} ${
+          item.attributes.city
         }</h5>
-            ${getAmmenities(item)}
+            ${getAmmenities(item.attributes.amenities)}
         `
-        popupDiv.onclick = handleImageClick;
         L.marker([
-            Number(item.coordinates.latitude),
-            Number(item.coordinates.longitude),
+            Number(item.attributes.latitude),
+            Number(item.attributes.longitude),
         ], {icon: customIcon})
         .bindPopup(popupDiv)
             .openPopup()
