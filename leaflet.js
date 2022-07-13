@@ -151,7 +151,7 @@ const locations = [
   },
 ];
 
-const icon = L.icon({
+const customIcon = L.icon({
   iconUrl: "/img/baby.png",
   iconSize: [30, 30],
   iconAnchor: [15, 30],
@@ -180,7 +180,7 @@ const getAmmenities = (item) => {
     }
   }
 
-  const letList = list
+  return list
     .map(
       (item) =>
         `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
@@ -188,9 +188,9 @@ const getAmmenities = (item) => {
         .join("");
     };
 
-    function handleImageClick() {
-        console.log('clicked')
-    }
+function handleImageClick() {
+    console.log('clicked')
+}
 function getCaffees() {
 
     locations.forEach((item) => {
