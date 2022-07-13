@@ -164,7 +164,6 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-
 const getAmmenities = (item) => {
     const list = [];
     for (const [key, value] of Object.entries(item.ammenities)) {
@@ -181,36 +180,25 @@ const getAmmenities = (item) => {
         .join("");
     };
 
-    let map1 = document.getElementById('map');
-    let img = document.createElement('img');
-    img.classList.add('ammenities-icons')
-    map1.appendChild(img);
-
-    console.log({ map1 })
-
-    let icons = document.querySelectorAll('img.ammenities-icons')
-    Array.from(icons).forEach(icon => icon.addEventListener('click', clickIcon))
-    console.log({ icons });
-
-    function clickIcon() {
-        console.log('CLICKED')
+    function handleImageClick() {
+        console.log('clicked')
     }
-
-
 function getCaffees() {
+
     locations.forEach((item) => {
-        L.marker([
-            Number(item.coordinates.latitude),
-            Number(item.coordinates.longitude),
-        ], {icon: customIcon})
-        .bindPopup(
-            `
+        let popupDiv = L.DomUtil.create('div', 'infoWindow');
+        popupDiv.innerHTML = `
             <h3>${item.name}</h3>
             <h5 class="street-address">${item.address.street}</h5>
             <h5 class="other-address">${item.address.postcode} ${item.address.city}</h5>
             ${getAmmenities(item)}
-            `
-            )
+        `
+        popupDiv.onclick = handleImageClick;
+        L.marker([
+            Number(item.coordinates.latitude),
+            Number(item.coordinates.longitude),
+        ], {icon: customIcon})
+        .bindPopup(popupDiv)
             .openPopup()
             .addTo(map);
         });
