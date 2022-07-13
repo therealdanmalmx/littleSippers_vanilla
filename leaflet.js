@@ -24,6 +24,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: true,
       garden: true,
     },
@@ -43,6 +44,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: false,
+      books: true,
       playground: true,
       garden: false,
     },
@@ -62,6 +64,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: false,
       garden: true,
     },
@@ -81,6 +84,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: false,
+      books: true,
       playground: false,
       garden: true,
     },
@@ -100,6 +104,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: true,
       garden: false,
     },
@@ -119,6 +124,7 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: true,
       garden: false,
     },
@@ -138,17 +144,18 @@ const locations = [
     ammenities: {
       changeroom: true,
       toys: true,
+      books: true,
       playground: false,
       garden: true,
     },
   },
 ];
 
-const customIcon = L.icon({
-    iconUrl: '/img/baby.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -20],
+const icon = L.icon({
+  iconUrl: "/img/baby.png",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -25],
 });
 
 function getLocation() {
@@ -165,16 +172,17 @@ function error(err) {
 }
 
 const getAmmenities = (item) => {
-    const list = [];
-    for (const [key, value] of Object.entries(item.ammenities)) {
-        if (value === true) {
-            list.push(key);
-        }
-    }
+  const list = [];
 
-    return list
+  for (const [key, value] of Object.entries(item.ammenities)) {
+    if (value === true) {
+      list.push(key);
+    }
+  }
+
+  const letList = list
     .map(
-        (item) =>
+      (item) =>
         `<img class="ammenities-icons" src=img/${item}.png alt=${item} />`
         )
         .join("");
@@ -190,7 +198,9 @@ function getCaffees() {
         popupDiv.innerHTML = `
             <h3>${item.name}</h3>
             <h5 class="street-address">${item.address.street}</h5>
-            <h5 class="other-address">${item.address.postcode} ${item.address.city}</h5>
+            <h5 class="other-address">${item.address.postcode} ${
+          item.address.city
+        }</h5>
             ${getAmmenities(item)}
         `
         popupDiv.onclick = handleImageClick;
