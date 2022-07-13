@@ -171,11 +171,17 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
-const getAmmenities = (item) => {
-  const list = [];
+const getAmmenities = async (item) => {
 
-  for (const [key, value] of Object.entries(item.ammenities)) {
-    if (value === true) {
+    const res = await fetch('http://localhost:1337/api/cafes')
+    const json = await res.jseon()
+
+    const data = json.data;
+
+    const list = [];
+
+  for (const [key, value] of Object.entries(data)) {
+    if (value === 'true') {
       list.push(key);
     }
   }
@@ -189,6 +195,10 @@ const getAmmenities = (item) => {
     };
 
 function handleImageClick() {
+    const div = document.createElement('div');
+    div.classList.add('sidebar');
+    document.body.append(div);
+
     console.log('clicked')
 }
 function getCaffees() {

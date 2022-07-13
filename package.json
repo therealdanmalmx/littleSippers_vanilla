@@ -1,0 +1,25 @@
+{
+  "name": "littlesippers_vanilla",
+  "version": "1.0.0",
+  "description": "little sippers - a parents best friend",
+  "main": "leaflet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/therealdanmalmx/littleSippers_vanilla.git"
+  },
+  "keywords": [
+    "leaflet",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "mumbler@digitalmumble.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/therealdanmalmx/littleSippers_vanilla/issues"
+  },
+  "homepage": "https://github.com/therealdanmalmx/littleSippers_vanilla#readme"
+}
