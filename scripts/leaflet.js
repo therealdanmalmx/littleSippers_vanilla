@@ -188,7 +188,7 @@ const getAmmenities = (item) => {
     return list
         .map(
             (item) =>
-                `<img onclick="handleImageClick()" class="ammenities-icons" src=img/${item}.png alt=${item} />`
+                `<img onclick="handleImageClick()" class="ammenities-icons" src=/img/${item}.png alt=${item} />`
            )
            .sort()
            .join("");
@@ -229,6 +229,18 @@ async function getCaffees() {
         });
     }
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('Submit')
+    }
+
+    const addNewLocation = () => {
+      alert('Add new location')
+    }
+
+    const editLocation = () => {
+      alert('Edit location')
+    }
 
 getLocation();
 getCaffees();

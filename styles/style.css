@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	max-width: 100%;
+}
+
+#map {
+	height: 80vh;
+	max-height: 80vh;
+
+}
+
+/* Popup */
+
+.street-address {
+	display: block;
+	font-size: 0.75rem;
+	font-weight: normal
+}
+
+.other-address {
+	font-size: 0.75rem;
+	font-weight: normal
+}
+
+.ammenities-icons {
+	display: inline-block;
+	margin-top: 10px;
+	padding-left: 15px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.ammenities-icons:first-of-type {
+	padding: 0;
+}
+
+/* Sidebar */
+
+.sidebar {
+	position: absolute;
+	display: none;
+	bottom: 0;
+	left: 0;
+	height: 200px;
+	background-color: grey;
+}
+/* Footer */
+
+.footer {
+	height: 20vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #C1DDD8;
+	border-top: 3px solid #FFF;
+}
+
+.footer-logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: 30px;
+}
+
+img {
+	height: 75px;
+}
+
+.footer-logo-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	font-weight: 600;
+	color: #616F6C;
+	margin-top: 1rem;
+}
+
+.footer-logo-title {
+	font-size: 1.5rem;
+	text-align: center;
+}
+.footer-logo-subtitle {
+	font-size: .88rem;
+	line-height: .8rem;
+	text-align: right;
+	color: #616F6C;
+	letter-spacing: .5px;
+}
+
+.footer-location {
+	display: flex;
+	flex-direction: row;
+	border: none;
+}
+
+.footer-location-add-new {
+	font-size: 1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 1rem 1rem;
+	border: none;
+	cursor: pointer;
+	background: none;
+	color: #616F6C;
+}
+
+a,
+a:active,
+a:focus {
+	color: #616F6C ;
+	text-decoration: none;
+}
+a:hover {
+	color: #808684 ;
+
+}
+
+.footer-location-separator {
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding: 1rem 0;
+	color: #FFF;
+}
+
+.footer-location-edit {
+	font-size: 1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 1rem 1rem;
+	border: none;
+	cursor: pointer;
+	background: none;
+	color: #616F6C ;
+}
+
+.footer-contacts {
+	margin-right: 30px;
+}
