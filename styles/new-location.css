@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #6DB1BF;
+
+}
+.new-location {
+    display: flex;
+    flex-direction: column;
+    /* background-color: grey; */
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 50%;
+}
+
+.new-location-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 1rem;
+    background-color: grey;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    outline: none;
+    color: #FFF;
+}
+input[type="text"]::placeholder {
+    text-transform: uppercase;
+    color: #FFF;
+}
+.new-location-city,
+.new-location-latlng {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[name="city"] {
+    width: 65%
+}
+
+input[name="latitude"] {
+    width: 49%;
+}
+
+input[name="longitude"] {
+    width: 49%;
+}
+
+.new-location-heading {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    color: #FFF;
+}
+
+.new-location-form {
+    display: flex;
+    flex-direction: column;
+}

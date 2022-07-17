@@ -59,6 +59,9 @@ body {
 	justify-content: space-between;
 	background-color: #C1DDD8;
 	border-top: 3px solid #FFF;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 
 .footer-logo {
@@ -120,8 +123,8 @@ a:focus {
 }
 a:hover {
 	color: #808684 ;
-
 }
+
 
 .footer-location-separator {
 	font-size: 1.5rem;

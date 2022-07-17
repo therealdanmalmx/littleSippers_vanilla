@@ -3,10 +3,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a new location</title>
+    <link rel="stylesheet" href="/styles/new-location.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>New location</title>
 </head>
 <body>
-    <h1>Add a new location</h1>
+    <div class="new-location">
+        <h1 class="new-location-heading">Add a new location</h1>
+            <form  class="new-location-form">
+                <input type="text" name="name" placeholder="name of establishment">
+                <input type="text" name="street" placeholder="street">
+                <div class="new-location-city">
+                    <input type="text" name="postalcode" placeholder="postal code">
+                    <input type="text" name="city" placeholder="city">
+                </div>
+                <div class="new-location-latlng">
+                    <input type="text" name="latitude" placeholder="latitude">
+                    <input type="text" name="longitude" placeholder="longitude">
+                </div>
+                <div class="new-location-form-name">
+                </div>
+
+            </form>
+    </div>
+    <div class="footer">
+        <div class="footer-logo">
+          <a href="/index.html">
+            <img src="/img/littleSippers_green.png" alt="">
+            <div class="footer-logo-text">
+              <p class="footer-logo-title">LittleSippers</p>
+              <p class="footer-logo-subtitle">a parents best friend</p>
+          </a>
+          </div>
+        </div>
+        <div class="footer-location">
+          <button onclick="editLocation()"class="footer-location-edit" type="button"><a href="#">Edit a location</a></button>
+        </div>
+        <div class="footer-contacts">Logo goes here</div>
 
 </body>
 </html>
