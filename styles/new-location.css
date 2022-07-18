@@ -73,6 +73,8 @@ input[name="longitude"] {
 .new-location-icons {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
 .new-location-icons-heading {
@@ -125,9 +127,12 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox'] ~ .new-location-icons-text {
+
     border-bottom: 5px solid transparent;
 }
 
 input[type='checkbox']:checked ~ .new-location-icons-text {
+    position: relative;
+    width: 100px;
     border-bottom: 3px solid #C1CAD6;
 }
