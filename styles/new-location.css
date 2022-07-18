@@ -74,7 +74,6 @@ input[name="longitude"] {
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100%;
 }
 
 .new-location-icons-heading {
@@ -89,6 +88,7 @@ input[name="longitude"] {
 .new-location-icons-img {
     margin-top: 1.5rem;
     height: 100px;
+    width: 100px;
     cursor: pointer;
 }
 .new-location-icon {
@@ -127,8 +127,8 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox'] ~ .new-location-icons-text {
-
     border-bottom: 5px solid transparent;
+    margin:  auto;
 }
 
 input[type='checkbox']:checked ~ .new-location-icons-text {
