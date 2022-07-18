@@ -234,14 +234,6 @@ async function getCaffees() {
       console.log('Submit')
     }
 
-    const addNewLocation = () => {
-      alert('Add new location')
-    }
-
-    const editLocation = () => {
-      alert('Edit location')
-    }
-
 getLocation();
 getCaffees();
 

@@ -6,12 +6,10 @@
 
 body {
     background-color: #6DB1BF;
-
 }
 .new-location {
     display: flex;
     flex-direction: column;
-    /* background-color: grey; */
     margin: 0 auto;
     margin-top: 20px;
     width: 50%;
@@ -24,33 +22,40 @@ body {
 
 input {
     margin-bottom: 1rem;
-    background-color: grey;
+    background-color: #C1CAD6;
     border: none;
     padding: 1rem 2rem;
     border-radius: 5px;
     outline: none;
     color: #FFF;
 }
+
 input[type="text"]::placeholder {
     text-transform: uppercase;
     color: #FFF;
 }
+
 .new-location-city,
 .new-location-latlng {
     display: flex;
     justify-content: space-between;
 }
 
+input[name="postalcode"] {
+    width: 34%
+}
+
 input[name="city"] {
-    width: 65%
+    width: 64%
 }
 
-input[name="latitude"] {
-    width: 49%;
-}
-
+input[name="latitude"],
 input[name="longitude"] {
     width: 49%;
+}
+
+.new-location-latlng-link {
+    text-align: center;
 }
 
 .new-location-heading {
@@ -63,4 +68,65 @@ input[name="longitude"] {
 .new-location-form {
     display: flex;
     flex-direction: column;
+}
+
+.new-location-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-location-icons-heading {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: #EEE;
+}
+
+.new-location-icons-img {
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+.new-location-icon {
+    cursor: pointer;
+}
+
+.new-location-icons-text {
+    margin-top: 0.3rem;
+    text-align: center;
+}
+
+div img:not(.footer-logo-img) {
+    display: block;
+    margin-top: 1.5rem;
+    margin: 0 auto;
+    max-height: 3.125rem;
+    height: 2.8125rem;
+}
+
+.new-location-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50px;
+    color: #6DB1BF;
+    background-color: #C1DDD8;
+}
+
+input[type='checkbox'] {
+    position: relative;
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type='checkbox'] + label {
+    border-bottom: 5px solid transparent;
+}
+
+input[type='checkbox']:checked + label {
+    border-bottom: 5px solid black;
 }
