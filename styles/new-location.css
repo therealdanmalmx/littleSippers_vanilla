@@ -86,6 +86,7 @@ input[name="longitude"] {
 
 .new-location-icons-img {
     margin-top: 1.5rem;
+    height: 100px;
     cursor: pointer;
 }
 .new-location-icon {
@@ -95,6 +96,7 @@ input[name="longitude"] {
 .new-location-icons-text {
     margin-top: 0.3rem;
     text-align: center;
+    padding-bottom: 0.3rem;
 }
 
 div img:not(.footer-logo-img) {
@@ -118,15 +120,14 @@ div img:not(.footer-logo-img) {
 }
 
 input[type='checkbox'] {
-    position: relative;
     display: none;
     -webkit-appearance: none;
 }
 
-input[type='checkbox'] + label {
+input[type='checkbox'] ~ .new-location-icons-text {
     border-bottom: 5px solid transparent;
 }
 
-input[type='checkbox']:checked + label {
-    border-bottom: 5px solid black;
+input[type='checkbox']:checked ~ .new-location-icons-text {
+    border-bottom: 3px solid #C1CAD6;
 }
