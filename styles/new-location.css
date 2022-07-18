@@ -54,10 +54,6 @@ input[name="longitude"] {
     width: 49%;
 }
 
-.new-location-latlng-link {
-    text-align: center;
-}
-
 .new-location-heading {
     text-align: center;
     text-transform: uppercase;
@@ -110,7 +106,6 @@ div img:not(.footer-logo-img) {
 }
 
 .new-location-button {
-    margin-top: 1rem;
     padding: 1rem 2rem;
     border: none;
     text-transform: uppercase;
