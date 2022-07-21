@@ -43,6 +43,8 @@ body {
 /* Sidebar */
 
 .sidebar {
+	display: flex;
+	flex-direction: row;
 	display: none;
 	position: absolute;
 	left: 50%;
@@ -60,7 +62,7 @@ body {
 	background-color: #FFF; /* Black */
 	overflow-x: hidden; /* Disable horizontal scroll */
 	opacity: 0.9;
-	transition: height 2s ease-in-out;
+	transition: sidebar ease-in-out;
 }
 
 .close-sidebar {
@@ -70,12 +72,26 @@ body {
 	cursor: pointer;
 	margin: auto 1rem;
 }
-.sidebar:hover {
-	transition: all
-	ease-in-out
+
+.sidebar-image {
+	width: 200px;
+}
+.sidebar-image img {
+	display: flex;
+	margin: .5rem auto;
+	height: 30px
+}
+
+.sidebar-title {
+	text-align: center;
+}
+
+.sidebar-description {
+	text-align: center;
+	margin-top: .5rem;
+	padding: 0 .5rem;
 }
 /* Footer */
-
 .footer {
 	height: 20vh;
 	display: flex;
