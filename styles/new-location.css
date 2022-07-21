@@ -116,6 +116,7 @@ div img:not(.footer-logo-img) {
     background-color: #C1DDD8;
 }
 
+/* Custom checkbox */
 input[type='checkbox'] {
     display: none;
     -webkit-appearance: none;

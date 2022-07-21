@@ -43,12 +43,36 @@ body {
 /* Sidebar */
 
 .sidebar {
-	position: absolute;
 	display: none;
+	position: absolute;
+	left: 50%;
 	bottom: 0;
-	left: 0;
+	transform: translate(-50%, -50%);
+	/* display: none;
+	bottom: 0;
 	height: 200px;
 	background-color: grey;
+	z-index: 5; */
+	height: 40%; /* Full-height: remove this if you want "auto" height */
+	width: 100%; /* Set the width of the sidebar */
+	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+	z-index: 9999; /* Stay on top */
+	background-color: #FFF; /* Black */
+	overflow-x: hidden; /* Disable horizontal scroll */
+	opacity: 0.9;
+	transition: height 2s ease-in-out;
+}
+
+.close-sidebar {
+	display: flex;
+	justify-content: flex-end;
+	align-content: center;
+	cursor: pointer;
+	margin: auto 1rem;
+}
+.sidebar:hover {
+	transition: all
+	ease-in-out
 }
 /* Footer */
 

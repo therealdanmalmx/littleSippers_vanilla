@@ -188,20 +188,26 @@ const getAmmenities = (item) => {
     return list
         .map(
             (item) =>
-                `<img onclick="handleImageClick()" class="ammenities-icons" src=/img/${item}.png alt=${item} />`
+                `<img
+                  onclick="handleImageClick()"
+                  class="ammenities-icons"
+                  src=/img/${item}.png alt=${item}
+                />`
            )
            .sort()
            .join("");
 };
-
-function handleImageClick() {
-    const div = document.createElement('div');
-    div.classList.add('sidebar');
-    document.body.append(div);
-
+const handleImageClick = () => {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'block';
     console.log('clicked')
 }
-async function getCaffees() {
+const closeSidebar = () => {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'none';
+    console.log('clicked')
+}
+const getCaffees = async () => {
 
     const res = await fetch('http://localhost:1337/api/cafes')
     const json = await res.json()
