@@ -44,8 +44,7 @@ body {
 
 .sidebar,
 .sidebar:active,
-.sidebar:focus
-.sidebar:hover {
+.sidebar:target {
 	display: none;
 	position: absolute;
 	flex-direction: column;
@@ -54,13 +53,13 @@ body {
 	right: 0;
 	height: 100%; /* Full-height: remove this if you want "auto" height */
 	width: 250px; /* Set the width of the sidebar */
-	z-index: 9999; /* Stay on top */
+	z-index: 1001; /* Stay on top */
 	background-color: #FFF; /* Black */
 	overflow: hidden; /* Disable horizontal scroll */
 	opacity: 0.9;
 	border-top-left-radius: 30px;
 	border-bottom-left-radius: 30px;
-	transition: all 2s ease-in-out;
+	transition: width 2s ease-in-out;
 }
 
 .close-sidebar {
