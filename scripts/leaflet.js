@@ -199,7 +199,7 @@ const getAmmenities = (item) => {
 };
 const handleImageClick = () => {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.style.display = 'block';
+    sidebar.style.display = 'flex';
     console.log('clicked')
 }
 const closeSidebar = () => {
