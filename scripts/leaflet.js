@@ -4,10 +4,10 @@ const tileUrl =
 const attribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
-const initialZoom = 7;
+const initialZoom = 10;
 
 // const map = L.map("map").setView([0, 0], initialZoom);
-const map = L.map("map").setView([60, 13], initialZoom);
+const map = L.map("map").setView([57.721001, 12.940250], initialZoom);
 
 const locations = [
   {
@@ -166,7 +166,7 @@ function getLocation() {
 function success(pos) {
   const crd = pos.coords;
 //   map.setView([crd.latitude, crd.longitude], initialZoom);
-  map.setView([60, 13], initialZoom);
+  map.setView([57.721001, 12.940250], initialZoom);
 
 }
 
@@ -201,7 +201,6 @@ const handleImageClick = () => {
     const sidebar = document.querySelector('.sidebar');
     sidebar.style.display = 'flex';
     sidebar.classList.contains('slide-out') && sidebar.classList.remove('slide-out');
-    // sidebar.setAttribute('class', 'slide-in', 'slide-in');
     sidebar.classList.add('slide-in')
   }
   const closeSidebar = () => {
@@ -216,7 +215,6 @@ const getCaffees = async () => {
     const data = json.data;
 
     data.forEach((item) => {
-        // console.log({item});
         let popupDiv = L.DomUtil.create('div', 'infoWindow');
         popupDiv.innerHTML = `
             <h3>${item.attributes.name}</h3>
