@@ -200,12 +200,13 @@ const getAmmenities = (item) => {
 const handleImageClick = () => {
     const sidebar = document.querySelector('.sidebar');
     sidebar.style.display = 'flex';
-    console.log('clicked')
-}
-const closeSidebar = () => {
+    sidebar.classList.contains('slide-out') && sidebar.classList.remove('slide-out');
+    // sidebar.setAttribute('class', 'slide-in', 'slide-in');
+    sidebar.classList.add('slide-in')
+  }
+  const closeSidebar = () => {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.style.display = 'none';
-    console.log('clicked')
+    sidebar.classList.add('slide-out')
 }
 const getCaffees = async () => {
 

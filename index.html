@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- leaflet css -->
     <link
       rel="stylesheet"
@@ -17,13 +25,18 @@
       integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
       crossorigin=""
     ></script>
+    <!-- custom scripts -->
+    <script
+      src="/scripts/leaflet.js"
+      defer
+    ></script>
     <!-- custom css -->
     <link rel="stylesheet" href="/styles/style.css" />
     <title>Little Sippers</title>
   </head>
   <body>
     <div class="sidebar">
-      <span onclick="closeSidebar()" class="close-sidebar">x</span>
+      <span class="close-sidebar" onclick="closeSidebar()"><i class="fa-solid fa-xmark"></i></span>
       <h3>Icon description</h3>
       <div class="sidebar-image">
         <img src="/img/changeroom.png" alt="Changeroom">
@@ -70,6 +83,5 @@
         <div class="footer-contacts">
           <a href="https://www.buymeacoffee.com/gethubbers" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
         </div>
-      <script defer src="/scripts/leaflet.js"></script>
   </body>
 </html>

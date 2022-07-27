@@ -51,15 +51,44 @@ body {
 	justify-content: space-around;
 	align-items: center;
 	right: 0;
-	height: 100%; /* Full-height: remove this if you want "auto" height */
-	width: 250px; /* Set the width of the sidebar */
-	z-index: 1001; /* Stay on top */
-	background-color: #FFF; /* Black */
-	overflow: hidden; /* Disable horizontal scroll */
+	height: 100%;
+	width: 250px;
+	transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+	z-index: 1001;
+	background-color: #FFF;
+	overflow: hidden;
 	opacity: 0.9;
 	border-top-left-radius: 30px;
 	border-bottom-left-radius: 30px;
-	transition: width 2s ease-in-out;
+}
+
+.slide-in {
+    animation: slide-in 600ms forwards;
+    -webkit-animation: slide-in 600ms forwards;
+}
+
+@keyframes slide-in {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateX(0%); }
+}
+
+.slide-out {
+    animation: slide-out 600ms backwards;
+    -webkit-animation: slide-out 600ms backwards;
+}
+
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(100%); }
 }
 
 .close-sidebar {
@@ -67,6 +96,10 @@ body {
 	right: 10px;
 	top: 10px;
 	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.close-sidebar:hover {
+	color: darkgrey;
 }
 
 .sidebar-image {
