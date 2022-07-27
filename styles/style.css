@@ -45,10 +45,9 @@ body {
 .sidebar {
 	display: none;
 	position: absolute;
-	left: 50%;
-	bottom: 0;
-	transform: translate(-50%, -50%);
-	height: 40%; /* Full-height: remove this if you want "auto" height */
+	justify-content: space-around;
+	top: 0;
+	height: 150px; /* Full-height: remove this if you want "auto" height */
 	width: 100%; /* Set the width of the sidebar */
 	z-index: 9999; /* Stay on top */
 	background-color: #FFF; /* Black */
