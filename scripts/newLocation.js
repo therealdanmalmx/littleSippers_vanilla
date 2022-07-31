@@ -34,12 +34,12 @@ const addNewLocation = () => {
                 city,
                 latitude,
                 longitude,
-                amenities
+                amenities: JSON.stringify(amenities),
             }
         }
     };
 
-console.log(options.body.data.amenities);
+    console.log(options.body.data.amenities);
 
     fetch('http://localhost:1337/api/cafes', options)
     .then(response => response.json())

@@ -177,8 +177,10 @@ function error(err) {
 const getAmmenities = (item) => {
     console.log({item})
 
+    const parsedItem = JSON.parse(item);
+
     const list = [];
-    item.forEach((amen) => {
+    parsedItem.forEach((amen) => {
       list.push(amen);
     })
     // for (const [key, value] of Object.entries(item)) {
