@@ -34,7 +34,7 @@ const addNewLocation = () => {
                 city,
                 latitude,
                 longitude,
-                amenities: JSON.stringify(amenities)
+                amenities
             }
         }
     };
@@ -43,7 +43,7 @@ console.log(options.body.data.amenities);
 
     fetch('http://localhost:1337/api/cafes', options)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => console.log({response}))
     .catch(err => console.error(err));
 
     // alert('New location added')
