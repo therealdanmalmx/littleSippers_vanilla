@@ -176,10 +176,16 @@ function error(err) {
 
 const getAmmenities = (item) => {
     console.log({item})
+    const arrayItem = Array.from(item);
+    console.log({item})
+
     const list = [];
+    // Array.from(item).forEach((amen) => {
+    //   list.push(amen);
+    // })
     for (const [key, value] of Object.entries(item)) {
-        if (value === 'true') {
-          list.push(key);
+        if (value) {
+          list.push(value);
         }
       }
 
@@ -241,6 +247,7 @@ const getCaffees = async () => {
 
 getLocation();
 getCaffees();
+
 
 L.tileLayer(tileUrl, {
   attribution,

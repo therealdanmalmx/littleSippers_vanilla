@@ -10,52 +10,49 @@
 <body>
     <div class="new-location">
         <h1 class="new-location-heading">Add a new location</h1>
-            <form  class="new-location-form">
-                <input type="text" name="name" placeholder="name of establishment">
-                <input type="text" name="street" placeholder="street">
-                <div class="new-location-city">
-                    <input type="text" name="postalcode" placeholder="postal code">
-                    <input type="text" name="city" placeholder="city">
-                </div>
-                <div class="new-location-latlng">
-                    <input type="text" name="latitude" placeholder="latitude">
-                    <input type="text" name="longitude" placeholder="longitude">
-                </div>
-                <p class="new-location-latlng-link">You can find the latitude and longitude of a location <a href="https://www.latlong.net/" target="_blank" rel="noopener">here</a></p>
-                <p class="new-location-icons-heading">What amenities exist? Click all that apply</p>
-                <div class="new-location-icons">
-                    <label class="new-location-icons-img" htmlFor="changeroom">
-                        <input type="checkbox" value='changeroom' name="changeroom" id="changeroom" />
-                        <img class="new-location-icon" src="/img/changeroom.png" alt="changeroom">
-                        <p class="new-location-icons-text">Changeroom</p>
-                        <span class="new-location-icons-underline"></span>
-                    </label>
-                    <label class="new-location-icons-img" htmlFor="toys">
-                        <input type="checkbox" value='toys' name="toys" id="toys" />
-                        <img class="new-location-icon" src="/img/duck.png" alt="toys">
-                        <p class="new-location-icons-text">Toys</p>
-                    </label>
-                    <label class="new-location-icons-img" htmlFor="books">
-                        <input type="checkbox" value='books' name="books" id="books" />
-                        <img class="new-location-icon" src="/img/literature.png" alt="books">
-                        <p class="new-location-icons-text">Books</p>
-                    </label>
-                    <label class="new-location-icons-img" htmlFor="playground">
-                        <input type="checkbox" value='playground' name="playground" id="playground" />
-                        <img class="new-location-icon" src="/img/playground.png" alt="playground">
-                        <p class="new-location-icons-text">Playground</p>
-                    </label>
-                    <label class="new-location-icons-img" htmlFor="garden">
-                        <input type="checkbox" value='garden' name="garden" id="garden" />
-                        <img class="new-location-icon" src="/img/playoutside.png" alt="garden">
-                        <p class="new-location-icons-text">Garden</p>
-                    </label>
-                </div>
-                <button onclick="addNewLocation()" class="new-location-button"type="submit">Submit new location</button>
-                <div class="new-location-form-name">
-                </div>
-
-            </form>
+        <form id="new-location-form">
+            <input type="text" name="name" placeholder="name of establishment">
+            <input type="text" name="street" placeholder="street">
+            <div class="new-location-city">
+                <input type="text" name="postalcode" placeholder="postal code">
+                <input type="text" name="city" placeholder="city">
+            </div>
+            <div class="new-location-latlng">
+                <input type="text" name="latitude" placeholder="latitude">
+                <input type="text" name="longitude" placeholder="longitude">
+            </div>
+            <p class="new-location-latlng-link">You can find the latitude and longitude of a location <a href="https://www.latlong.net/" target="_blank" rel="noopener">here</a></p>
+            <p class="new-location-icons-heading">What amenities exist? Click all that apply</p>
+            <div class="new-location-icons">
+                <label class="new-location-icons-img" htmlFor="changeroom">
+                    <input type="checkbox" value='changeroom' name="changeroom" id="changeroom" />
+                    <img class="new-location-icon" src="/img/changeroom.png" alt="changeroom">
+                    <p class="new-location-icons-text">Changeroom</p>
+                    <span class="new-location-icons-underline"></span>
+                </label>
+                <label class="new-location-icons-img" htmlFor="toys">
+                    <input type="checkbox" value='duck' name="toys" id="toys" />
+                    <img class="new-location-icon" src="/img/duck.png" alt="toys">
+                    <p class="new-location-icons-text">Toys</p>
+                </label>
+                <label class="new-location-icons-img" htmlFor="books">
+                    <input type="checkbox" value='literature' name="books" id="books" />
+                    <img class="new-location-icon" src="/img/literature.png" alt="books">
+                    <p class="new-location-icons-text">Books</p>
+                </label>
+                <label class="new-location-icons-img" htmlFor="playground">
+                    <input type="checkbox" value='playground' name="playground" id="playground" />
+                    <img class="new-location-icon" src="/img/playground.png" alt="playground">
+                    <p class="new-location-icons-text">Playground</p>
+                </label>
+                <label class="new-location-icons-img" htmlFor="garden">
+                    <input type="checkbox" value='playoutside' name="garden" id="garden" />
+                    <img class="new-location-icon" src="/img/playoutside.png" alt="garden">
+                    <p class="new-location-icons-text">Garden</p>
+                </label>
+            </div>
+            <button onclick="addNewLocation()" class="new-location-button"type="submit">Submit new location</button>
+        </form>
     </div>
     <div class="footer">
         <div class="footer-logo">
