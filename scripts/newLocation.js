@@ -46,11 +46,8 @@ const addNewLocation = () => {
     .then(response => console.log({response}))
     .catch(err => console.error(err));
 
-    // alert('New location added')
 }
 
 const editLocation = () => {
     alert('Edit location')
 }
-
-// {name: 'Daniel Malmgren de Oliveira', street: 'Torgilsgatan 16C', postalcode: '506 38', city: 'Borås', latitude: '57', …}
