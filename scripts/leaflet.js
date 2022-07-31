@@ -184,8 +184,8 @@ const getAmmenities = (item) => {
     //   list.push(amen);
     // })
     for (const [key, value] of Object.entries(item)) {
-        if (value) {
-          list.push(value);
+        if (value === 'true') {
+          list.push(key);
         }
       }
 
