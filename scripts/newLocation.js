@@ -8,7 +8,7 @@
 //     },
 // });
 
-const addNewLocation = () => {
+const addNewLocation = async () => {
     const amenities = [];
     const name = document.querySelector("input[name='name']").value;
     const street = document.querySelector("input[name='street']").value;
@@ -21,31 +21,42 @@ const addNewLocation = () => {
         icon.checked && amenities.push(icon.value);
     })
 
-    console.log({icons});
-    // console.log(amenities.forEach((amen) => console.log(amen)));
+    const stringifiedAmenities = JSON.stringify(amenities)
 
     const options = {
         method: 'POST',
-        body: {
-            data: {
-                name,
-                street,
-                postal_code: postalcode,
-                city,
-                latitude,
-                longitude,
-                amenities: JSON.stringify(amenities),
-            }
-        }
+        mode: "cors",
+        headers: {
+            "Content-type": "application/json",
+        },
+        data: JSON.stringify({
+            name,
+            street,
+            postal_code: postalcode,
+            city,
+            latitude,
+            longitude,
+        })
     };
+    console.log('data2', options.data.amenities);
 
-    console.log(options.body.data.amenities);
+    try {
+        const response = await fetch('http://localhost:1337/api/cafes', options);
+        const json = await response.json();
+        console.log('data', json);
+        return json;
 
-    fetch('http://localhost:1337/api/cafes', options)
-    .then(response => response.json())
-    .then(response => console.log({response}))
-    .catch(err => console.error(err));
+    } catch (error) {
+        console.error(error)
+    }
 
+    // fetch('http://localhost:1337/api/cafes', options)
+    //     .then(response => response.json())
+    //     .then(response => {
+    //         console.log({response})
+    //         return response;
+    //     })
+    //     .catch(err => console.error(err));
 }
 
 const editLocation = () => {

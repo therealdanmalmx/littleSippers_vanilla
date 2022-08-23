@@ -228,7 +228,6 @@ const getCaffees = async () => {
             <h5 class="other-address">${item.attributes.postal_code} ${
           item.attributes.city
         }</h5>
-            ${getAmmenities(item.attributes.amenities)}
         `
         L.marker([
             Number(item.attributes.latitude),
