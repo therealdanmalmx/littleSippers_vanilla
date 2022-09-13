@@ -7,7 +7,7 @@ const attribution =
 const initialZoom = 10;
 
 // const map = L.map("map").setView([0, 0], initialZoom);
-const map = L.map("map").setView([57.721001, 12.940250], initialZoom);
+const map = L.map("map").setView([57.721001, 12.94025], initialZoom);
 
 const locations = [
   {
@@ -165,9 +165,8 @@ function getLocation() {
 
 function success(pos) {
   const crd = pos.coords;
-//   map.setView([crd.latitude, crd.longitude], initialZoom);
-  map.setView([57.721001, 12.940250], initialZoom);
-
+  //   map.setView([crd.latitude, crd.longitude], initialZoom);
+  map.setView([57.721001, 12.94025], initialZoom);
 }
 
 function error(err) {
@@ -175,79 +174,77 @@ function error(err) {
 }
 
 const getAmmenities = (item) => {
-    console.log({item})
+  console.log({ item });
 
-    const parsedItem = JSON.parse(item);
+  const parsedItem = JSON.parse(item);
 
-    const list = [];
-    parsedItem.forEach((amen) => {
-      list.push(amen);
-    })
-    // for (const [key, value] of Object.entries(item)) {
-    //     if (value === 'true') {
-    //       list.push(key);
-    //     }
-    //   }
+  const list = [];
+  parsedItem.forEach((amen) => {
+    list.push(amen);
+  });
+  // for (const [key, value] of Object.entries(item)) {
+  //     if (value === 'true') {
+  //       list.push(key);
+  //     }
+  //   }
 
-      console.log({list})
+  console.log({ list });
 
-    return list
-        .map(
-            (item) =>
-                `<img
-                  onclick="handleImageClick()"
-                  class="ammenities-icons"
-                  src=/img/${item}.png alt=${item}
-                />`
-           )
-           .sort()
-           .join("");
+  return list
+    .map(
+      (item) =>
+        `<img
+          onclick="handleImageClick()"
+          class="ammenities-icons"
+          src=/img/${item}.png alt=${item}
+        />`
+    )
+    .sort()
+    .join("");
 };
 const handleImageClick = () => {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.style.display = 'flex';
-    sidebar.classList.contains('slide-out') && sidebar.classList.remove('slide-out');
-    sidebar.classList.add('slide-in')
-  }
-  const closeSidebar = () => {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.add('slide-out')
-}
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.style.display = "flex";
+  sidebar.classList.contains("slide-out") &&
+    sidebar.classList.remove("slide-out");
+  sidebar.classList.add("slide-in");
+};
+const closeSidebar = () => {
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.classList.add("slide-out");
+};
 const getCaffees = async () => {
+  const res = await fetch("http://localhost:1337/api/cafes?populate=*");
+  const json = await res.json();
 
-    const res = await fetch('http://localhost:1337/api/cafes')
-    const json = await res.json()
+  const data = json.data;
 
-    const data = json.data;
+  console.log({ data });
 
-    data.forEach((item) => {
-        let popupDiv = L.DomUtil.create('div', 'infoWindow');
-        popupDiv.innerHTML = `
+  data.forEach((item) => {
+    let popupDiv = L.DomUtil.create("div", "infoWindow");
+    popupDiv.innerHTML = `
             <h3>${item.attributes.name}</h3>
             <h5 class="street-address">${item.attributes.street}</h5>
-            <h5 class="other-address">${item.attributes.postal_code} ${
-          item.attributes.city
-        }</h5>
-            ${getAmmenities(item.attributes.amenities)}
-        `
-        L.marker([
-            Number(item.attributes.latitude),
-            Number(item.attributes.longitude),
-        ], {icon: customIcon})
-        .bindPopup(popupDiv)
-            .openPopup()
-            .addTo(map);
-        });
-    }
+            <h5 class="other-address">${item.attributes.postal_code} ${item.attributes.city}</h5>
+  `;
+    L.marker(
+      [Number(item.attributes.latitude), Number(item.attributes.longitude)],
+      { icon: customIcon }
+    )
+      .bindPopup(popupDiv)
+      .openPopup()
+      .addTo(map);
+  });
+};
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log('Submit')
-    }
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("Submit");
+};
 
 getLocation();
 getCaffees();
-
 
 L.tileLayer(tileUrl, {
   attribution,
