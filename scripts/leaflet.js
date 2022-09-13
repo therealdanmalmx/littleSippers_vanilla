@@ -227,7 +227,7 @@ const getCaffees = async () => {
             <h3>${item.attributes.name}</h3>
             <h5 class="street-address">${item.attributes.street}</h5>
             <h5 class="other-address">${item.attributes.postal_code} ${item.attributes.city}</h5>
-  `;
+        `;
     L.marker(
       [Number(item.attributes.latitude), Number(item.attributes.longitude)],
       { icon: customIcon }

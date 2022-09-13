@@ -11,8 +11,6 @@ const addNewLocation = () => {
     icon.checked && amenities.push(icon.value);
   });
 
-  const BASE_URL = "http://localhost:1337";
-
   const input = {
     name,
     street,
@@ -21,10 +19,6 @@ const addNewLocation = () => {
     latitude,
     longitude,
   };
-
-  const dataInput = JSON.stringify({ input });
-
-  console.log({ input });
 
   fetch("http://localhost:1337/api/cafes", {
     method: "POST",
