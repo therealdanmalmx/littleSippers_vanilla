@@ -18,6 +18,7 @@ const addNewLocation = () => {
     city,
     latitude,
     longitude,
+    amenities: JSON.stringify(amenities),
   };
 
   fetch("http://localhost:1337/api/cafes", {
@@ -33,8 +34,9 @@ const addNewLocation = () => {
     .then((response) => {
       return response.json();
     })
-    .then((response) => console.log(JSON.stringify(response)))
     .catch((err) => console.error(err));
+  console.log(JSON.stringify(input.amenities));
+  console.log(typeof input.amenities);
 };
 
 // const editLocation = () => {
